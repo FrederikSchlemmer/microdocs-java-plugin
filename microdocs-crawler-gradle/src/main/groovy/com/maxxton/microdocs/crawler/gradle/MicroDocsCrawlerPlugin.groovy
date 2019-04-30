@@ -1,6 +1,5 @@
 package com.maxxton.microdocs.crawler.gradle
 
-import com.maxxton.microdocs.crawler.ErrorReporter
 import com.maxxton.microdocs.crawler.gradle.tasks.MicroDocs
 import com.maxxton.microdocs.crawler.gradle.tasks.MicroDocsCheckProjectTask
 import com.maxxton.microdocs.crawler.gradle.tasks.MicroDocsPublishProjectTask
@@ -13,8 +12,6 @@ class MicroDocsCrawlerPlugin implements Plugin<Project> {
     def jarName = "microdocs-crawler-doclet.jar";
 
     void apply(Project project) {
-
-        ErrorReporter.set(new GradleErrorReporter(project.logger));
 
         project.task('extractMicroDocsDoclet', group: 'microdocs') << {
             File tmpDir = new File("$project.buildDir/tmp")

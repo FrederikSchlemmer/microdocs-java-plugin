@@ -57,10 +57,8 @@ public class PathCollector implements Collector<PathBuilder> {
   public List<PathBuilder> collect(List<ReflectClass<?>> classes) {
     List<PathBuilder> pathBuilders = new ArrayList();
     classes.stream().filter(reflectClass -> reflectClass.hasAnnotation(controllers)).forEach(controller -> {
-      Logger.get().debug("Crawl controller: " + controller.getSimpleName());
       String[] mappers = requestMappers.toArray(new String[requestMappers.size()]);
       controller.getDeclaredMethods().stream().filter(method -> method.hasAnnotation(mappers)).forEach(method -> {
-        Logger.get().debug("Crawl controller method: " + method.getSimpleName());
         pathBuilders.addAll(collectPaths(controller, method));
       });
     });

@@ -2,6 +2,8 @@ package com.maxxton.microdocs.core.domain.component;
 
 import com.maxxton.microdocs.core.domain.JsonReference;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +20,24 @@ public class Component extends JsonReference {
     private Map<String, Annotation> annotations;
     private Map<String, Method> methods;
     private List<Component> dependencies;
+    private ArrayList<String> eventProducers = new ArrayList<>();
+    private ArrayList<String> eventConsumers = new ArrayList<>();
+
+    public ArrayList<String> getEventProducers() {
+        return eventProducers;
+    }
+
+    public void setEventProducers(ArrayList<String> eventProducers) {
+        this.eventProducers = eventProducers;
+    }
+
+    public ArrayList<String> getEventConsumers() {
+        return eventConsumers;
+    }
+
+    public void setEventConsumers(ArrayList<String> eventConsumers) {
+        this.eventConsumers = eventConsumers;
+    }
 
     public String getName() {
         return name;

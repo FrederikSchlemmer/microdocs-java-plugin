@@ -62,6 +62,10 @@ public class ReflectAnnotationValue {
     return rawString;
   }
 
+  public void setString(String string) {
+this.object = string;
+  }
+
   public Integer getInt() {
     if(this.object instanceof Integer){
       return (Integer) this.object;

@@ -5,13 +5,11 @@ import com.maxxton.microdocs.core.collector.ComponentCollector;
 import com.maxxton.microdocs.core.collector.SchemaCollector;
 import com.maxxton.microdocs.core.domain.component.ComponentType;
 import com.maxxton.microdocs.crawler.Crawler;
-import com.maxxton.microdocs.crawler.spring.collector.PathCollector;
-import com.maxxton.microdocs.crawler.spring.collector.SpringSchemaCollector;
+import com.maxxton.microdocs.crawler.spring.collector.*;
 import com.maxxton.microdocs.core.builder.ProjectBuilder;
 import com.maxxton.microdocs.core.domain.Project;
 import com.maxxton.microdocs.core.domain.schema.Schema;
 import com.maxxton.microdocs.core.reflect.ReflectClass;
-import com.maxxton.microdocs.crawler.spring.collector.DependencyCollector;
 
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +44,16 @@ public class SpringCrawler extends Crawler {
 
     @Override
     protected Project extractProject(ProjectBuilder project, List<ReflectClass<?>> classes) {
+        for (ReflectClass clazz : classes){
+            try {
+                EventProducerCollector.runEventExtraction(Crawler.configuration.getPathToProjectSrcFolder(), clazz);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            EventConsumerCollector eventConsumerCollector = new EventConsumerCollector();
+            eventConsumerCollector.runExtraction(clazz);
+        }
+
         // extract components
         List<ComponentBuilder> components = componentCollector.collect(classes);
         components.forEach(component -> project.component(component.simpleName(), component.build()));

@@ -1,6 +1,14 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
 
 apply plugin: 'groovy'
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'maven'
 
 repositories {
@@ -9,16 +17,16 @@ repositories {
 }
 
 dependencies {
-    compile gradleApi()
     compile 'org.codehaus.groovy:groovy-all:2.4.7'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
     compile files("${System.properties['java.home']}/../lib/tools.jar")
     compile("com.fasterxml.jackson.core:jackson-databind:2.7.5")
-    compile ("com.maxxton:microdocs-core-java:1.9.6")
+    compile project(":microdocs-core-java")
     testCompile("junit:junit:4.12")
 }
 
 group='com.maxxton'
-version = '1.9.6'
+version = '1.9.4'
 
 task fatJar(type: Jar) {
     manifest {
@@ -29,5 +37,6 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     include('com/maxxton/**')
     include('com/fasterxml/**')
+    include('org/yaml/snakeyaml/**')
     with jar
 }

@@ -20,8 +20,12 @@ repositories {
 dependencies {
     compile gradleApi()
     compile ("com.fasterxml.jackson.core:jackson-databind:2.7.5")
-    compile ("com.mashape.unirest:unirest-java:1.4.9")
-    compile ("com.maxxton:microdocs-core-java:1.7.1")
+    compile "com.mashape.unirest:unirest-java:1.4.9"
+    compile "org.apache.httpcomponents:httpclient:4.5"
+    compile "org.apache.httpcomponents:httpasyncclient:4.0.2"
+    compile "org.apache.httpcomponents:httpmime:4.3.6"
+    compile "org.json:json:20140107"
+    compile project(":microdocs-core-java")
 }
 
 group='com.maxxton'
@@ -33,6 +37,9 @@ task fatJar(type: Jar, dependsOn: 'jar') {
     include('com/maxxton/**')
     include('com/fasterxml/**')
     include('com/mashape/**')
+    include('org/apache/**')
+    include('com/mashape/unirest/**')
+    include('org/json/**')
     include('META-INF/gradle-plugins/microdocs.properties')
     include('microdocs-crawler-doclet.jar')
     with jar
@@ -61,47 +68,6 @@ artifacts {
 
 signing {
     sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: sonatypeUsername, password: sonatypePassword)
-            }
-//            repository(url: mavenLocal().url)
-
-            pom.project {
-                name 'MicroDocs Gradle Crawler'
-                packaging 'jar'
-                description 'MicroDocs crawler for gradle projects'
-                url 'https://github.com/MaxxtonGroup/microdocs'
-
-                scm {
-                    url 'scm:git@github.com:MaxxtonGroup/microdocs.git'
-                    connection 'scm:git@github.com:MaxxtonGroup/microdocs.git'
-                    developerConnection 'scm:git@github.com:MaxxtonGroup/microdocs.git'
-                }
-
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 's.hermans'
-                        name 'Steven Hermans'
-                    }
-                }
-            }
-        }
-    }
 }
 
 task wrapper(type: Wrapper) {

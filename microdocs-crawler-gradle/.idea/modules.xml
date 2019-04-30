@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-568481350/com.maxxton.microdocs-core-java.iml" filepath="$PROJECT_DIR$/.idea/modules/-568481350/com.maxxton.microdocs-core-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-568481350/com.maxxton.microdocs-core-java.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-568481350/com.maxxton.microdocs-core-java.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-568481350/com.maxxton.microdocs-core-java.test.iml" filepath="$PROJECT_DIR$/.idea/modules/-568481350/com.maxxton.microdocs-core-java.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.maxxton.microdocs-crawler-gradle.iml" filepath="$PROJECT_DIR$/.idea/modules/com.maxxton.microdocs-crawler-gradle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.maxxton.microdocs-crawler-gradle.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.maxxton.microdocs-crawler-gradle.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.maxxton.microdocs-crawler-gradle.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.maxxton.microdocs-crawler-gradle.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/microdocs-crawler-gradle.com.maxxton.microdocs-crawler-gradle.main.iml" filepath="$PROJECT_DIR$/.idea/modules/microdocs-crawler-gradle.com.maxxton.microdocs-crawler-gradle.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/microdocs-crawler-gradle.com.maxxton.microdocs-crawler-gradle.test.iml" filepath="$PROJECT_DIR$/.idea/modules/microdocs-crawler-gradle.com.maxxton.microdocs-crawler-gradle.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/microdocs-java-plugin.com.maxxton.microdocs-crawler-gradle.iml" filepath="$PROJECT_DIR$/.idea/modules/microdocs-java-plugin.com.maxxton.microdocs-crawler-gradle.iml" />
+    </modules>
+  </component>
+</project>

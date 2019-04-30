@@ -3,7 +3,9 @@ package com.maxxton.microdocs.core.reflect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Steven Hermans
@@ -25,8 +27,27 @@ public class ReflectClass<T> extends ReflectDoc {
     private List<ReflectMethod> declaredMethods = new ArrayList();
     private List<ReflectMethod> classMethods = new ArrayList();
 
+    private ArrayList<String> eventProducers = new ArrayList<>();
+    private ArrayList<String> eventConsumers = new ArrayList<>();
+
     @JsonIgnore
     private T original;
+
+    public ArrayList<String> getEventProducers() {
+        return eventProducers;
+    }
+
+    public void setEventProducers(ArrayList<String> eventProducers) {
+        this.eventProducers = eventProducers;
+    }
+
+    public ArrayList<String> getEventConsumers() {
+        return eventConsumers;
+    }
+
+    public void setEventConsumers(ArrayList<String> eventConsumers) {
+        this.eventConsumers = eventConsumers;
+    }
 
     public String getPackageName() {
         return packageName;
@@ -195,4 +216,5 @@ public class ReflectClass<T> extends ReflectDoc {
     public void setFile(String file) {
         this.file = file;
     }
+
 }

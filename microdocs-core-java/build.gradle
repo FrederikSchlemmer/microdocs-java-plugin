@@ -1,5 +1,5 @@
 group 'com.maxxton'
-version '1.9.6'
+version '1.9.4'
 
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -12,7 +12,9 @@ repositories {
 dependencies {
     compile ("com.fasterxml.jackson.core:jackson-databind:2.7.5")
     compile ("com.mashape.unirest:unirest-java:1.4.9")
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
     testCompile ("junit:junit:4.12")
+    compile files("${System.properties['java.home']}/../lib/tools.jar")
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -34,45 +36,4 @@ artifacts {
 
 signing {
     sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-//            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-//                authentication(userName: sonatypeUsername, password: sonatypePassword)
-//            }
-            repository(url: mavenLocal().url)
-
-            pom.project {
-                name 'MicroDocs Core Java'
-                packaging 'jar'
-                description 'MicroDocs core functionalities to share accross various projects'
-                url 'https://github.com/MaxxtonGroup/microdocs'
-
-                scm {
-                    url 'scm:git@github.com:MaxxtonGroup/microdocs.git'
-                    connection 'scm:git@github.com:MaxxtonGroup/microdocs.git'
-                    developerConnection 'scm:git@github.com:MaxxtonGroup/microdocs.git'
-                }
-
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 's.hermans'
-                        name 'Steven Hermans'
-                    }
-                }
-            }
-        }
-    }
 }

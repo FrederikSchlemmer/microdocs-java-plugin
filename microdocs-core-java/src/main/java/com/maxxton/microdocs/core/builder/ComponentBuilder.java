@@ -9,6 +9,7 @@ import com.maxxton.microdocs.core.domain.component.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Build component
@@ -21,6 +22,16 @@ public class ComponentBuilder implements Builder<Component> {
 
     public String simpleName() {
         return simpleName;
+    }
+
+    public ComponentBuilder eventProducers(ArrayList<String> eventProducers) {
+        component.setEventProducers(eventProducers);
+        return this;
+    }
+
+    public ComponentBuilder eventConsumers(ArrayList<String> eventConsumers) {
+        component.setEventConsumers(eventConsumers);
+        return this;
     }
 
     public ComponentBuilder simpleName(String name) {

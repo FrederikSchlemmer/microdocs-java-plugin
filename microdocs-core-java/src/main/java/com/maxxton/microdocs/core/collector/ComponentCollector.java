@@ -47,6 +47,8 @@ public class ComponentCollector implements Collector<ComponentBuilder> {
                         .simpleName(reflectClass.getSimpleName())
                         .authors(authors)
                         .type(type)
+                        .eventConsumers(reflectClass.getEventConsumers())
+                        .eventProducers(reflectClass.getEventProducers())
                         .description(reflectClass.getDescription().getText());
 
                 reflectClass.getDeclaredMethods().forEach(method -> {
@@ -63,7 +65,7 @@ public class ComponentCollector implements Collector<ComponentBuilder> {
                 reflectClass.getAnnotations().forEach(compAnnotation -> {
                     AnnotationBuilder annotationBuilder = new AnnotationBuilder();
                     annotationBuilder.name(compAnnotation.getSimpleName());
-                    compAnnotation.getProperties().entrySet().forEach(entry -> annotationBuilder.property(entry.getKey(), entry.getValue().toString()));
+                    compAnnotation.getProperties().entrySet().forEach(entry -> annotationBuilder.property(entry.getKey(), entry.getValue().getString()));
                     componentBuilder.annotation(annotationBuilder);
                 });
                 //todo: check dependencies

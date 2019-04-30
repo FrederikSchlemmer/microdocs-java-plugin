@@ -32,7 +32,6 @@ public class DependencyCollector implements Collector<DependencyBuilder> {
     public List<DependencyBuilder> collect(List<ReflectClass<?>> classes) {
         List<DependencyBuilder> dependencyBuilders = new ArrayList();
         classes.stream().filter(reflectClass -> reflectClass.hasAnnotation(Types.FEIGN_CLIENT.getClassName())).forEach(client -> {
-            Logger.get().debug("Crawl client: " + client.getSimpleName());
             dependencyBuilders.add(collect(client));
         });
         return dependencyBuilders;

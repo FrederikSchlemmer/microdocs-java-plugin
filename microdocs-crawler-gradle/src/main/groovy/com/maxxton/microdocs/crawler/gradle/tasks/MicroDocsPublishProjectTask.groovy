@@ -1,7 +1,6 @@
 package com.maxxton.microdocs.crawler.gradle.tasks
 
 import com.maxxton.microdocs.core.domain.check.CheckResponse
-import com.maxxton.microdocs.crawler.ErrorReporter
 import com.maxxton.microdocs.crawler.gradle.MicroDocsUtils
 import com.maxxton.microdocs.publisher.MicroDocsPublisher
 import com.maxxton.microdocs.publisher.ServerConfiguration

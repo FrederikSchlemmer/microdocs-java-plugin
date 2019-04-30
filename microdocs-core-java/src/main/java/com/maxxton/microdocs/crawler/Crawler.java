@@ -2,7 +2,9 @@ package com.maxxton.microdocs.crawler;
 
 import com.maxxton.microdocs.core.builder.ProjectBuilder;
 import com.maxxton.microdocs.core.domain.Project;
+import com.maxxton.microdocs.core.logging.Logger;
 import com.maxxton.microdocs.core.reflect.ReflectClass;
+import com.maxxton.microdocs.crawler.spring.config.Config;
 
 import java.util.List;
 
@@ -17,7 +19,12 @@ public abstract class Crawler {
      * @param classes list of ReflectClasses
      * @return extracted project
      */
-    public Project crawl(List<ReflectClass<?>> classes){
+
+    public static Config configuration;
+
+    public Project crawl(List<ReflectClass<?>> classes, Config configuration){
+        this.configuration = configuration;
+
         //start builder
         ProjectBuilder projectBuilder = new ProjectBuilder();
         classes.forEach(clazz -> projectBuilder.projectClass(clazz.getName()));
